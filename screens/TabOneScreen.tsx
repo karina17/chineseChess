@@ -1,33 +1,40 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
-
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
+import { Dimensions, ImageBackground, StyleSheet, TouchableOpacity, View } from 'react-native';
+import Grid from '../components/Grid';
 import { RootTabScreenProps } from '../types';
+
+const { width } = Dimensions.get("window");
 
 export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+      <ImageBackground source={require('../assets/images/board.png')} resizeMode="stretch" style={styles.image}>
+        <Grid/>
+      </ImageBackground>
+      
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    width,
+    height: width,
   },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
+  image: {
+    height: '100%',
+    width: '100%'
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
+  text: {
+    color: "white",
+    fontSize: 42,
+    lineHeight: 84,
+    fontWeight: "bold",
+    textAlign: "center",
+    backgroundColor: "#000000c0"
+  }, 
+  topPieces: {
+    top: 0
+  }
+  
 });
